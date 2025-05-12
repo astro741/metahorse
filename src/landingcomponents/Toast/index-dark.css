@@ -6471,12 +6471,12 @@ html {
 /* stylelint-disable */
 #app-content {
   overflow-x: hidden;
-  height: 620px;
+  height: 600px;
   overflow: auto;
   box-shadow: 0px 2px 12px #000000a1;
   display: flex;
   flex-direction: column;
-  width: 375px;
+  width: 370px;
 }
 
 html[data-theme] #app-content {
@@ -48900,7 +48900,7 @@ DEPRECATED
 
 @media screen and (max-width: calc(576px - 1px)) {
   .import-tokens-modal__custom-token-form__container {
-    height: 370px;
+    height: 357px;
   }
 }
 
@@ -65490,16 +65490,16 @@ input:checked + .send-v2__amount-max__button {
  * Colors for dark theme
  */
 [data-theme="dark"] {
-  --color-background-default: var(--brand-colors-grey-grey800);
+  --color-background-default: var(--brand-colors-grey-grey900);
   --color-background-default-hover: #282b2e;
   --color-background-default-pressed: #36383b;
-  --color-background-alternative: var(--brand-colors-grey-grey900);
+  --color-background-alternative: var(--brand-colors-grey-grey1000);
   --color-background-alternative-hover: #191b1d;
   --color-background-alternative-pressed: #27292a;
   --color-background-hover: #ffffff05;
   --color-background-pressed: #ffffff14;
   --color-text-default: var(--brand-colors-white-white000);
-  --color-text-alternative: var(--brand-colors-grey-grey100);
+  --color-text-alternative: var(--brand-colors-grey-grey300);
   --color-text-muted: var(--brand-colors-grey-grey400);
   --color-icon-default: var(--brand-colors-white-white000);
   --color-icon-alternative: var(--brand-colors-grey-grey200);
@@ -65510,7 +65510,7 @@ input:checked + .send-v2__amount-max__button {
   --color-overlay-alternative: #000000cc;
   --color-shadow-default: #00000080;
   --color-overlay-inverse: var(--brand-colors-white-white010);
-  --color-primary-default: var(--brand-colors-purple-purple500);
+  --color-primary-default: var(--brand-colors-blue-blue300);
   --color-primary-default-hover: #0092fa;
   --color-primary-default-pressed: #54b6fc;
   --color-primary-alternative: var(--brand-colors-blue-blue300);

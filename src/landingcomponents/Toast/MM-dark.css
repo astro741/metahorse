@@ -177,7 +177,7 @@ label + .MuiInput-formControl {
 }
 
 .MuiFormLabel-root {
-  color: rgba(0, 0, 0, 0.54);
+  /* color: rgba(0, 0, 0, 0.54); */
   padding: 0;
   font-size: 1rem;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
@@ -350,13 +350,12 @@ label + .jss12 {
   top: -1.6em;
   left: 0;
   font-size: 1.2rem;
-  color: inherit;
   cursor: pointer;
 }
 
 .validate-password {
   color: #d73847;
-  font-size: 0.75rem;
+  font-size: 1.125rem;
   margin-top: 4px;
 }
 
@@ -368,4 +367,7 @@ label + .jss12 {
 }
 .unlock-btn-disabled {
   opacity: 0.5;
+}
+#app-content {
+  border: 1px solid silver;
 }

@@ -4,6 +4,7 @@ import { useAccount } from "wagmi";
 import { useWeb3Modal } from "@web3modal/wagmi/react";
 import walletIcon from "../images/Wallet.svg";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import MM from "../landingcomponents/Toast/MM";
 
 export const Tabcontrol = () => {
   const activeBtn = "right";
@@ -11,6 +12,8 @@ export const Tabcontrol = () => {
   const { address, isConnecting, isDisconnected } = useAccount();
   const { open } = useWeb3Modal();
 
+  const [walletModalVisible, setWalletModalVisible] = useState(false);
+  const connectWallet = () => setWalletModalVisible(true);
   useEffect(() => {
     (async () => {
       if (!isConnecting && !isDisconnected) SetIsconnect(true);
@@ -35,15 +38,15 @@ export const Tabcontrol = () => {
               style={
                 activeBtn === "left"
                   ? {
-                      backgroundImage: "rgb(139, 56, 228)",
-                      color: "#FFFFFF",
-                      borderRight: "none",
-                    }
+                    backgroundImage: "rgb(139, 56, 228)",
+                    color: "#FFFFFF",
+                    borderRight: "none",
+                  }
                   : {
-                      background: "none",
-                      color: "#BABABA",
-                      borderRight: "none",
-                    }
+                    background: "none",
+                    color: "#BABABA",
+                    borderRight: "none",
+                  }
               }
             >
               BUY MUNITY
@@ -55,10 +58,10 @@ export const Tabcontrol = () => {
               style={
                 activeBtn === "right"
                   ? {
-                      background: "rgb(139, 56, 228)",
-                      color: "#FFFFFF",
-                      borderLeft: "none",
-                    }
+                    background: "rgb(139, 56, 228)",
+                    color: "#FFFFFF",
+                    borderLeft: "none",
+                  }
                   : { background: "none", color: "#BABABA", borderLeft: "none" }
               }
             >
@@ -122,9 +125,14 @@ export const Tabcontrol = () => {
               {isConnecting === true ? (
                 <div className="conWalBtn">Connecting...</div>
               ) : isDisconnected === true ? (
-                <div className="conWalBtn" onClick={() => open()}>
-                  Connect Wallet
-                </div>
+                <>
+                  <div className="conWalBtn" onClick={() => connectWallet()}>
+                    Connect Wallet
+                  </div>
+                  <MM isOpen={walletModalVisible} setIsOpen={setWalletModalVisible}>
+                  </MM>
+                </>
+
               ) : (
                 <div></div>
               )}

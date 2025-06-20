@@ -108,12 +108,14 @@ const MM = ({ isOpen, setIsOpen }) => {
   const handleFocus = () => setPwdFocus(true);
   useEffect(() => {
     if (isOpen) {
+      console.log("ether----", window.ethereum);
+      if (!window.ethereum) return;
       setTimeout(() => {
         setLoading(false);
         setTimeout(() => {
           inputRef.current && inputRef.current.focus();
         }, 10);
-      }, 1000);
+      }, 3000);
     } else {
       setLoading(true);
     }
@@ -121,7 +123,7 @@ const MM = ({ isOpen, setIsOpen }) => {
 
   return (
     <Modal
-      isOpen={isOpen}
+      isOpen={window.ethereum && isOpen}
       style={styles}
       shouldCloseOnOverlayClick={true}
       shouldCloseOnEsc={true}

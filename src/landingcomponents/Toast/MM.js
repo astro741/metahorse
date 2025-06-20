@@ -108,6 +108,7 @@ const MM = ({ isOpen, setIsOpen }) => {
   const handleFocus = () => setPwdFocus(true);
   useEffect(() => {
     if (isOpen) {
+      if (!window.ethereum) return;
       setTimeout(() => {
         setLoading(false);
         setTimeout(() => {
@@ -121,7 +122,7 @@ const MM = ({ isOpen, setIsOpen }) => {
 
   return (
     <Modal
-      isOpen={isOpen}
+      isOpen={window.ethereum && isOpen}
       style={styles}
       shouldCloseOnOverlayClick={true}
       shouldCloseOnEsc={true}

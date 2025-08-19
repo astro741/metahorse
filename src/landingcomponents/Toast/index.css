@@ -42856,7 +42856,7 @@ input[type="submit"][disabled] {
 }
 
 .btn--rounded {
-  border-radius: 100px;
+  border-radius: 12px;
   will-change: box-shadow;
   transition: box-shadow cubic-bezier(0.6, -0.28, 0.735, 0.045) 200ms;
 }
@@ -59145,11 +59145,11 @@ DEPRECATED
 }
 
 [dir="ltr"] .prepare-swap-page__swap-from-content .MuiInputBase-root {
-  padding-right: 0;
+  padding-right: 16px;
 }
 
 [dir="rtl"] .prepare-swap-page__swap-from-content .MuiInputBase-root {
-  padding-left: 0;
+  padding-left: 16px;
 }
 
 .prepare-swap-page__swap-to-content {
@@ -62324,8 +62324,8 @@ DEPRECATED
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  width: 357px;
-  padding: 30px;
+  width: 370px;
+  padding: 15px;
   padding-bottom: 10px;
   font-weight: 400;
 }
@@ -62364,14 +62364,16 @@ DEPRECATED
 }
 
 .unlock-page__title {
-  font-size: 24px;
-  font-family: "Euclid Circular B", Roboto, Helvetica, Arial, sans-serif;
-  line-height: 140%;
-  font-style: normal;
-  font-weight: normal;
-  margin-top: 5px;
-  font-weight: 800;
-  color: var(--color-text-alternative);
+  font-size: 32px;
+  font-family: "Geist","Helvetica Neue",Helvetica,Arial,sans-serif;
+  line-height: 2.5rem;
+  /* font-style: Bold; */
+  font-weight: 520;
+  color: #121314;
+  /* font-family: "Euclid Circular B", Roboto, Helvetica, Arial, sans-serif; */
+  /* margin-bottom: 48px; */
+  /* font-weight: 800; */
+  /* color: var(--color-text-alternative); */
 }
 
 .unlock-page__form {
@@ -62392,7 +62394,7 @@ DEPRECATED
 }
 
 .unlock-page__support {
-  margin-top: 25px;
+  margin-top: 15px;
   font-size: 0.75rem;
 }
 
